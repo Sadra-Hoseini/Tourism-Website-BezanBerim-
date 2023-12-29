@@ -1,0 +1,31 @@
+
+
+
+<div class="cart-form-container">
+
+    <i class="fas fa-times" id="cart-close"></i>
+
+    
+    <form action=""  >
+        {% csrf_token %}
+        {% if request.user.is_authenticated %}
+
+        
+        {% for tour in tour_cart %}
+        <h3>{{tour.name}}</h3>
+        {% empty %}
+        <h3> شما هنوز توری خریداری نکرده اید</h3>
+        {% endfor %}
+
+
+
+        {% else %}
+        <h3> لطفا ابتدا وارد حساب کاربری خود شوید</h3>
+
+        {% endif %}
+         
+    </form>
+        
+    
+
+</div>

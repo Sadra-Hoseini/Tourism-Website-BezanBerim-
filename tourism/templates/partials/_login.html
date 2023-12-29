@@ -1,0 +1,40 @@
+
+
+
+{% if request.user.is_authenticated %}
+
+<div class="login-form-container">
+
+    <i class="fas fa-times" id="form-close"></i>
+
+    <form action=""  method="post">
+        {% csrf_token %}
+        {% include 'partials/_messages.html' %}
+        <h3>   {{request.user.username}}عزیز خوش آمدید   </h3>
+        <input type="submit" value="خروج" class="btn"  name="LogoutBtn">
+    </form>
+
+</div>
+{% else %}
+
+<div class="login-form-container">
+
+    <i class="fas fa-times" id="form-close"></i>
+
+    <form action="" , method="POST" >
+        {% csrf_token %}
+        <h3>ورود</h3>
+        {{login_form.email}}
+        {{login_form.password}}
+        <input type="submit" value="ورود" class="btn" name="LoginBtn">
+        <input type="checkbox" id="remember">
+        <label for="remember">مرا به خاطر بسپار</label>
+        <p>فراموشی رمز عبور؟<a href="{% url 'forgot_password' %}">اینجا کلیک کنید</a></p>
+        <p>آیا شما ثبت نام نکرده اید؟<a href="{% url 'register'  %}">اکنون ثبت نام کنید</a></p>
+    </form>
+
+</div>
+
+
+
+{% endif %}

@@ -1,0 +1,60 @@
+{%  extends 'base.html'%}
+
+
+{%  block content %}
+<!-- book section starts  -->
+
+<section class="book" id="book">
+
+    <h1 class="heading">
+        <span>b</span>
+        <span>o</span>
+        <span>o</span>
+        <span>k</span>
+        <span class="space"></span>
+        <span>n</span>
+        <span>o</span>
+        <span>w</span>
+    </h1>
+
+    <div class="row">
+
+        <div class="image">
+            <img src="images/book-img.svg" alt="">
+        </div>
+
+        <form action="" , style="margin-left: 700px;" , method="post">
+            {% csrf_token %}
+            
+            {% if request.user.is_authenticated %}
+            <p> {{request.user.username}} عزیز خوش آمدید</p>
+            {% else %}
+            <p> لطفا ابتدا وارد حساب کاربری خود شوید</p>
+            {% endif %}
+            <div class="inputBox">
+                <h3>کجا میری؟</h3>
+                {{BookForm.tour}}
+            </div>
+            <div class="inputBox">
+                <h3>چند نفرید؟</h3>
+                {{BookForm.number_of_persons}}
+            </div>
+            <div class="inputBox">
+                <h3>نام افراد را وارد کنید </h3>
+                {{BookForm.names_of_persons}}
+            </div>
+           
+            <input type="submit" class="btn" value="رزرو کردن" name="BookBtn">
+        </form>
+
+    </div>
+    <script>
+        document.querySelector("select").options[0].disabled = true;
+    </script>
+
+</section>
+
+<!-- book section ends -->
+
+
+{%  endblock  %}

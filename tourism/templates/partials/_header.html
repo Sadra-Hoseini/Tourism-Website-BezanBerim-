@@ -1,0 +1,49 @@
+<!-- header section starts  -->
+{% load static %}
+
+
+<header>
+    
+    <div id="menu-bar" class="fas fa-bars"></div>
+
+    <a href="#" class="logo"><span>T</span>ravel</a>
+
+    <nav class="navbar">
+        <a href="{% url  'home' %}">خانه</a>
+        <a name="BookLink" method="post" href="{% if request.user.is_authenticated %}{% url  'book' %}{% else %}{% url  'home' %}?is_not_authenticated{% endif %}" >رزرو</a>
+        <a href="{% url  'tours' %}">تور ها</a>
+        <a href="{% url  'services' %}">سرویس ها</a>
+        <a href="{% url  'gallery' %}">گالری عکس</a>
+        <a href="{% url  'review' %}">نظرات</a>
+        <a href="{% url  'contact' %}">ارتباط با ما</a>
+    </nav>
+
+    <div class="icons">
+        <i class="fas fa-search" id="search-btn"></i>
+        <i class="fas fa-user" id="login-btn"  name = 'login_btn'></i>   
+        <i class="fas fa-shopping-cart" id="cart-btn"></i>   
+
+    </div>
+    
+    
+    <form action="" class="search-bar-container">
+        <input type="search" id="search-bar" placeholder="سرچ کنید">
+        <label for="search-bar" class="fas fa-search"></label>
+    </form>
+
+    {% include 'partials/_login.html' %}
+    {% include 'partials/_cart.html' %}
+   
+
+   
+    
+    
+
+</header>
+
+
+
+
+
+<!-- header section ends -->
+
